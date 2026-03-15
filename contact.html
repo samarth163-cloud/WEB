@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Creator text Animations</title>
+    <style>
+        /* Shared Styles from main site to keep consistency */
+   body {
+            background-color: #1d0101;
+            /* Added a sleek grid background pattern */
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center center;
+            color: #ffffff;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            padding: 0px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #e5e5e5;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            max-width: 1200px;
+            margin: 0 auto;
+            position: sticky;
+            top: 2vh;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #e5e5e5;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+
+        /* Main Contact Section Styles */
+        main.contact-page {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-container {
+            width: 100%;
+            max-width: 650px;
+            background: rgba(25, 25, 25, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 50px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+        .contact-subtitle {
+            font-size: 1.1rem;
+            color: #d1d1d1;
+            margin: 0;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            font-size: 0.95rem;
+            color: #d1d1d1;
+            font-weight: 500;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease, background 0.3s ease;
+            font-family: inherit;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-color: #ff6a00;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .input-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            margin-top: 10px;
+            font-size: 1.15rem;
+            padding: 16px 32px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, #ff2a2a, #8f0000);
+            color: #ffffff;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 50, 50, 0.2);
+            text-align: center;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255, 50, 50, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success Message styling */
+        .form-message {
+            margin-top: 1rem;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .form-message.success {
+            display: block;
+            background: rgba(46, 213, 115, 0.15);
+            color: #2ed573;
+            border: 1px solid rgba(46, 213, 115, 0.3);
+        }
+        
+        .form-message.error {
+            display: block;
+            background: rgba(255, 71, 87, 0.15);
+            color: #ff4757;
+            border: 1px solid rgba(255, 71, 87, 0.3);
+        }
+
+        /* Footer Styles */
+        .footer {
+            margin-top: auto;
+            padding: 4rem 2rem 2rem 2rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 35px;
+            width: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-logo img:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            margin-bottom: 1rem;
+            padding: 0;
+        }
+
+        .footer-nav a {
+            color: #a3a3a3;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #ffffff;
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 1rem 0;
+        }
+
+        .footer-copy {
+            color: #666666;
+            font-size: 0.85rem;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+ <header class="container">
+        <a href="index.html" class="logo">
+            <!-- Updated the nav logo just in case -->
+            <img src="https://framerusercontent.com/images/hP9xqphX2F8HiY5nZsPdHX2T8.png?scale-down-to=1024&width=1289&height=1721"
+                alt="Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="buy.html">Buy Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main class="contact-page">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1 class="contact-title">Get In Touch</h1>
+                <p class="contact-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+            
+            <form id="contactForm" class="contact-form">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="input-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
+                <div id="formStatus" class="form-message"></div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="newbuy.html" class="footer-logo">
+                <img src="https://framerusercontent.com/images/hP9xqphX2F8HiY5nZsPdHX2T8.png" alt="Logo">
+            </a>
+            <ul class="footer-nav">
+                <li><a href="newbuy.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+            <div class="footer-divider"></div>
+            <p class="footer-copy">© 2026 Creator Animations. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- AJAX Fetch logic -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent standard page reload
+            
+            const btn = document.getElementById('submitBtn');
+            const statusDiv = document.getElementById('formStatus');
+            const form = this;
+            
+            // Gather form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+            
+            // UI state: loading
+            btn.disabled = true;
+            btn.innerText = 'Sending...';
+            statusDiv.className = 'form-message'; // reset
+            
+            // ----------------------------------------------------
+            // MOCK AJAX REQUEST: Replace with your actual endpoint
+            // Example: fetch('https://your-api.com/contact', { ... })
+            // ----------------------------------------------------
+            
+            // Simulating a successful network request using a timeout
+            setTimeout(() => {
+                // Success Handling!
+                btn.disabled = false;
+                btn.innerText = 'Send Message';
+                
+                statusDiv.innerText = 'Thank you! Your message has been sent successfully.';
+                statusDiv.classList.add('success');
+                
+                form.reset(); // clear input fields
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => { 
+                    statusDiv.classList.remove('success');
+                }, 5000);
+            }, 1200); 
+            // ----------------------------------------------------
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Text Animations</title>
+    <link rel="icon" href="https://framerusercontent.com/images/hP9xqphX2F8HiY5nZsPdHX2T8.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1d0101;
+            /* Added a sleek grid background pattern */
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center center;
+            color: #ffffff;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            padding: 0px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #e5e5e5;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            max-width: 1200px;
+            margin: 0 auto;
+            position: sticky;
+            top: 2vh;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #e5e5e5;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        /* High-End Split Hero */
+        .hero-split {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 6rem auto 4rem auto;
+            padding: 0 40px;
+            gap: 60px;
+            min-height: 60vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 550px;
+            animation: slideUp 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-video-wrapper {
+            flex: 1.2;
+            animation: slideUp 0.8s ease forwards 0.2s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 106, 0, 0.1);
+            color: #ff6a00;
+            border: 1px solid rgba(255, 106, 0, 0.3);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #d1d1d1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: #ffb3b3;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #a3a3a3;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .price-box {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 2.5rem;
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .price-amount {
+            font-size: 3.5rem;
+            color: #ffffff;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .buy-action-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 22px 30px;
+            background: linear-gradient(135deg, #ff2a2a, #ff6a00);
+            border-radius: 16px;
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 15px 35px rgba(255, 42, 42, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .buy-action-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(255, 42, 42, 0.5);
+        }
+
+        .video-container-glass {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-video-wrapper:hover .video-container-glass {
+             transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .video-container-glass iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-split {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .price-box {
+                justify-content: center;
+            }
+            .video-container-glass {
+                transform: none;
+            }
+            .hero-video-wrapper:hover .video-container-glass {
+                transform: none;
+            }
+        }
+
+        
+
+        /* Footer Styles */
+        .footer {
+            margin-top: 2rem;
+            padding: 4rem 2rem 2rem 2rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 35px;
+            width: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-logo img:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .footer-nav a {
+            color: #a3a3a3;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #ffffff;
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 1rem 0;
+        }
+
+        .footer-copy {
+            color: #666666;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Bundle Section */
+        .bundle-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 6rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .bundle-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ff6a00, #ff004c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .bundle-subtitle {
+            font-size: 1.25rem;
+            color: #d1d1d1;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .bundle-subtitle span {
+            font-weight: bold;
+            color: #ffb3b3;
+        }
+
+        .bundle-card {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 1000px;
+            width: 100%;
+            gap: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .bundle-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transform: scale(1.02);
+            transition: transform 0.4s ease;
+        }
+
+        .bundle-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .bundle-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .bundle-content {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .bundle-content h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+
+        .bundle-features {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bundle-features li {
+            font-size: 1.1rem;
+            color: #e5e5e5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bundle-features li::before {
+            content: '✓';
+            color: #ff6a00;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .bundle-btn {
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            padding: 18px 48px;
+            background: linear-gradient(135deg, #ff2a2a, #8f0000);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 50, 50, 0.2);
+        }
+
+        .bundle-btn:hover {
+            box-shadow: 0 15px 40px rgba(255, 50, 50, 0.4);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 6rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .faq-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .faq-container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: rgba(25, 25, 25, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 5px;
+            overflow: hidden;
+            transition: background 0.3s ease, border-color 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .faq-item:hover {
+            background: rgba(40, 40, 40, 0.9);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .faq-item summary {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 16px 20px;
+            list-style: none;
+            /* Hide default arrow */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #888;
+            font-weight: 300;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .faq-item[open] summary {
+            color: #e5e5e5;
+        }
+
+        .faq-item[open] summary::after {
+            content: '−';
+            /* minus sign */
+            transform: rotate(180deg);
+            color: #ff6a00;
+        }
+
+        .faq-content {
+            padding: 0 20px 20px 20px;
+            color: #a3a3a3;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            animation: fadeInFaq 0.4s ease forwards;
+        }
+
+        @keyframes fadeInFaq {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <a href="index.html" class="logo">
+            <!-- Updated the nav logo just in case -->
+            <img src="https://framerusercontent.com/images/hP9xqphX2F8HiY5nZsPdHX2T8.png?scale-down-to=1024&width=1289&height=1721"
+                alt="Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="buy.html">Buy Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+
+<!-- High-End Split Hero Section -->
+    <main class="hero-split">
+        <!-- Details & Buy Section -->
+        <div class="hero-content">
+            <div class="hero-badge">Premium Pack</div>
+            <h1 class="hero-title">Creator Text Animations</h1>
+            <h2 class="hero-subtitle">Pro-level text. One pack.</h2>
+            
+            <p class="hero-desc">
+                Stop wasting hours animating text. Upgrade your content with 29 hand-crafted, drag & drop animations built for modern creators. 
+            </p>
+
+            <ul class="bundle-features" style="margin-bottom: 2rem;">
+                <li>29 beautiful drag & drop text animations</li>
+                <li>Fully customizable (fonts, colors, fps)</li>
+                <li>Lifetime updates included</li>
+            </ul>
+
+            <div class="price-box">
+                <span class="price-currency">$</span>
+                <span class="price-amount">15</span>
+                <span class="price-currency">USD</span>
+            </div>
+
+            <a href="#" class="buy-action-btn">Buy Now</a>
+        </div>
+
+        <!-- Video Section -->
+        <div class="hero-video-wrapper">
+            <div class="video-container-glass">
+                <iframe src="https://www.youtube.com/embed/FuJMmRrjnQw?autoplay=1&mute=1&loop=1&playlist=FuJMmRrjnQw&controls=0" frameborder="0" allowfullscreen title="Creator Text Animations Preview"></iframe>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="bundle-section">
+        <h2 class="bundle-title">Bundle & Save 25%!</h2>
+        <p class="bundle-subtitle">Bundle the Creator Text Animations + Master LUT and <span>SAVE $20!</span></p>
+
+        <div class="bundle-card">
+            <div class="bundle-image">
+                <img src="https://framerusercontent.com/images/hJy2eejaN4nnzc4luFRunauFs.png?scale-down-to=512&width=2000&height=1500"
+                    alt="Special Bundle Package">
+            </div>
+
+            <div class="bundle-content">
+                <h3>Buy now. Level up.</h3>
+                <ul class="bundle-features">
+                    <li>Watch how it works</li>
+                    <li>Instant Download</li>
+                    <li>Lifetime Access & Updates</li>
+                </ul>
+                <a href="#" class="buy-btn bundle-btn">Get the Bundle</a>
+            </div>
+        </div>
+    </section>
+    <section class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <details class="faq-item">
+                <summary>How do I access the Pack after purchase?</summary>
+                <div class="faq-content">
+                    <p>Once purchased, you'll get an instant download link in your email—no waiting required.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Can I use the pack in monetized videos?</summary>
+                <div class="faq-content">
+                    <p>Yes, all the text animation presets inside the Creator Text Animations Pack can be used in
+                        personal or commercial projects.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Will the pack work with my editing software?</summary>
+                <div class="faq-content">
+                    <p>No, this pack is designed to work exclusively with Premiere Pro.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Do I need any extra plugins or software?</summary>
+                <div class="faq-content">
+                    <p>No extra software like After Effects or external plugins are needed - just drag, drop, and
+                        customize right inside Premiere Pro.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>What can I customize?</summary>
+                <div class="faq-content">
+                    <p>You can fully customize the text, font, size, color, position, animation speed, fps and more so
+                        you can make it completely your own!</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="#" class="footer-logo">
+                <img src="https://framerusercontent.com/images/hP9xqphX2F8HiY5nZsPdHX2T8.png" alt="Logo">
+            </a>
+            <ul class="footer-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+            <div class="footer-divider"></div>
+            <p class="footer-copy">© 2026 Creator Animations. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

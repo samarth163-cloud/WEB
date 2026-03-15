@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Text Animations</title>
+    <link rel="icon" href="https://framerusercontent.com/images/hP9xqphX2F8HiY5nZsPdHX2T8.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1d0101;
+            /* Added a sleek grid background pattern */
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center center;
+            color: #ffffff;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            padding: 0px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #e5e5e5;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            max-width: 1200px;
+            margin: 0 auto;
+            position: sticky;
+            top: 2vh;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #e5e5e5;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section Built for the Page Logo */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 6rem;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+            z-index: 5;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 320px;
+            /* Constrains the massive logo nicely */
+        }
+
+        /* Glowing effect behind the logo */
+        .logo-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255, 100, 100, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+            border-radius: 50%;
+            filter: blur(25px);
+        }
+
+        .page-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+            animation: float 6s ease-in-out infinite;
+            border-radius: 30px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ffffff, #ffb3b3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1.5px;
+        }
+
+        p {
+            font-size: 1.15rem;
+            color: #d1d1d1;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .buy-btn {
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            color: #1a0101;
+            border: none;
+            padding: 18px 48px;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+        }
+
+
+        .quotes-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 24px;
+            margin: 5rem 0 8rem 0;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .quotes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 16px;
+            margin: 0px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            max-width: 800px;
+            font-style: italic;
+            text-align: center;
+            color: #d1d1d1;
+            margin-bottom: 0%;
+
+        }
+
+        .quotes h3 {
+            color: #ffffff;
+            font-weight: 600;
+            font-style: normal;
+            margin-top: 0%;
+        }
+
+        .quotes p {
+            margin-bottom: 0%;
+        }
+
+        .instagram-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 4rem 2rem 6rem 2rem;
+        }
+
+        .instagram-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1200px;
+        }
+
+        .instagram-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .instagram-content img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Infinite Image Carousel */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            margin: 5rem 0 8rem 0;
+            position: relative;
+            /* Fade edges for aesthetic */
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+            width: max-content;
+            animation: scroll 25s linear infinite;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .carousel-track img {
+            width: 280px;
+            height: 350px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .carousel-track img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 100, 100, 0.2);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                /* 7 items * (280px width + 24px gap) = 2128px */
+                transform: translateX(-2128px);
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            margin-top: 2rem;
+            padding: 4rem 2rem 2rem 2rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 35px;
+            width: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-logo img:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .footer-nav a {
+            color: #a3a3a3;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #ffffff;
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 1rem 0;
+        }
+
+        .footer-copy {
+            color: #666666;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Bundle Section */
+        .bundle-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 6rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .bundle-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ff6a00, #ff004c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .bundle-subtitle {
+            font-size: 1.25rem;
+            color: #d1d1d1;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .bundle-subtitle span {
+            font-weight: bold;
+            color: #ffb3b3;
+        }
+
+        .bundle-card {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 1000px;
+            width: 100%;
+            gap: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .bundle-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transform: scale(1.02);
+            transition: transform 0.4s ease;
+        }
+
+        .bundle-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .bundle-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .bundle-content {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .bundle-content h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+
+        .bundle-features {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bundle-features li {
+            font-size: 1.1rem;
+            color: #e5e5e5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bundle-features li::before {
+            content: '✓';
+            color: #ff6a00;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .bundle-btn {
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            padding: 18px 48px;
+            background: linear-gradient(135deg, #ff2a2a, #8f0000);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 50, 50, 0.2);
+        }
+
+        .bundle-btn:hover {
+            box-shadow: 0 15px 40px rgba(255, 50, 50, 0.4);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 6rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .faq-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .faq-container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: rgba(25, 25, 25, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 5px;
+            overflow: hidden;
+            transition: background 0.3s ease, border-color 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .faq-item:hover {
+            background: rgba(40, 40, 40, 0.9);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .faq-item summary {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 16px 20px;
+            list-style: none;
+            /* Hide default arrow */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #888;
+            font-weight: 300;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .faq-item[open] summary {
+            color: #e5e5e5;
+        }
+
+        .faq-item[open] summary::after {
+            content: '−';
+            /* minus sign */
+            transform: rotate(180deg);
+            color: #ff6a00;
+        }
+
+        .faq-content {
+            padding: 0 20px 20px 20px;
+            color: #a3a3a3;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            animation: fadeInFaq 0.4s ease forwards;
+        }
+
+        @keyframes fadeInFaq {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <a href="buy.html" class="logo">
+            <!-- Updated the nav logo just in case -->
+            <img src="https://framerusercontent.com/images/hP9xqphX2F8HiY5nZsPdHX2T8.png?scale-down-to=1024&width=1289&height=1721"
+                alt="Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="buy.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="buy.html">Buy Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="logo-wrapper">
+            <!-- Center piece big layout for the new page logo! -->
+            <img src="https://framerusercontent.com/images/8dE6tZSf0DWcqW6Wc6seP5aReWw.png?scale-down-to=512&width=1600&height=1200"
+                alt="Page Logo" class="page-logo">
+        </div>
+        <h1>Creator Text Animations</h1>
+        <p>Elevate your projects with stunning motion graphics and premium text effects designed to stand out.</p>
+        <a href="buy.html" class="buy-btn">Buy Now</a>
+    </main>
+
+    <main class="hero">
+        <div class="logo-wrapper">
+            <!-- Center piece big layout for the new page logo! -->
+            <img src="https://framerusercontent.com/images/8jdL6KVZMpo9vrfrRAQg6eMd7U.png?scale-down-to=512&width=1000&height=1000"
+                alt="Page Logo" class="page-logo">
+        </div>
+        <h1>Creator master lut</h1>
+        <p>Elevate your projects with stunning motion graphics and premium text effects designed to stand out.</p>
+        <a href="buy.html" class="buy-btn">Buy Now</a>
+    </main>
+
+    <div class="quotes-container">
+        <div class="quotes">
+            <p>“The Creator Text Animation Pack is a huge time saver!
+                I was able to achieve high quality text animations for my videos without leaving Premiere Pro!”</p>
+            <h3>~Mickey</h3>
+        </div>
+    </div>
+
+    <div class="instagram-container">
+        <div class="instagram-content">
+            <img src="https://framerusercontent.com/images/wR7L0A33bRysGMKOkhDaecBrkc.png?width=498&height=170" alt="">
+            <img src="https://framerusercontent.com/images/nCwCSYTCTizt470L0VaoYlz5FzM.png?width=497&height=198" alt="">
+        </div>
+    </div>
+
+    <!-- Infinite Scroll Carousel -->
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <!-- First Set -->
+            <img src="https://framerusercontent.com/images/xZ51I9ujNtCUDkJcZ6jYNApECg.png?width=1080&height=1350"
+                alt="LUT 1">
+            <img src="https://framerusercontent.com/images/uDTuAWzWNbEhok3eesjiJLNmrA.png?width=1080&height=1350"
+                alt="LUT 2">
+            <img src="https://framerusercontent.com/images/YOEv5GkyIyHSv6W9GRLS6OLXAg8.png?width=1080&height=1350"
+                alt="LUT 3">
+            <img src="https://framerusercontent.com/images/FbD8wLT7qrTaCeT08cRb2wV2Qo.png?width=1080&height=1350"
+                alt="LUT 4">
+            <img src="https://framerusercontent.com/images/YOEv5GkyIyHSv6W9GRLS6OLXAg8.png?width=1080&height=1350"
+                alt="LUT 5">
+            <img src="https://framerusercontent.com/images/DyMuUjoniUCI1d60Ov9bzaXozb8.png?width=1080&height=1350"
+                alt="LUT 6">
+            <img src="https://framerusercontent.com/images/xlgHFHeDDb0ulNDbckGwySgJr0.png?width=1080&height=1350"
+                alt="LUT 7">
+            <!-- Duplicated Set for Infinite Scroll -->
+            <img src="https://framerusercontent.com/images/xZ51I9ujNtCUDkJcZ6jYNApECg.png?width=1080&height=1350"
+                alt="LUT 1">
+            <img src="https://framerusercontent.com/images/uDTuAWzWNbEhok3eesjiJLNmrA.png?width=1080&height=1350"
+                alt="LUT 2">
+            <img src="https://framerusercontent.com/images/YOEv5GkyIyHSv6W9GRLS6OLXAg8.png?width=1080&height=1350"
+                alt="LUT 3">
+            <img src="https://framerusercontent.com/images/FbD8wLT7qrTaCeT08cRb2wV2Qo.png?width=1080&height=1350"
+                alt="LUT 4">
+            <img src="https://framerusercontent.com/images/YOEv5GkyIyHSv6W9GRLS6OLXAg8.png?width=1080&height=1350"
+                alt="LUT 5">
+            <img src="https://framerusercontent.com/images/DyMuUjoniUCI1d60Ov9bzaXozb8.png?width=1080&height=1350"
+                alt="LUT 6">
+            <img src="https://framerusercontent.com/images/xlgHFHeDDb0ulNDbckGwySgJr0.png?width=1080&height=1350"
+                alt="LUT 7">
+        </div>
+    </div>
+
+
+
+
+    <section class="bundle-section">
+        <h2 class="bundle-title">Bundle & Save 25%!</h2>
+        <p class="bundle-subtitle">Bundle the Creator Text Animations + Master LUT and <span>SAVE $20!</span></p>
+
+        <div class="bundle-card">
+            <div class="bundle-image">
+                <img src="https://framerusercontent.com/images/hJy2eejaN4nnzc4luFRunauFs.png?scale-down-to=512&width=2000&height=1500"
+                    alt="Special Bundle Package">
+            </div>
+
+            <div class="bundle-content">
+                <h3>Buy now. Level up.</h3>
+                <ul class="bundle-features">
+                    <li>Watch how it works</li>
+                    <li>Instant Download</li>
+                    <li>Lifetime Access & Updates</li>
+                </ul>
+                <a href="buy.html" class="buy-btn bundle-btn">Get the Bundle</a>
+            </div>
+        </div>
+    </section>
+    <section class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <details class="faq-item">
+                <summary>How do I access the Pack after purchase?</summary>
+                <div class="faq-content">
+                    <p>Once purchased, you'll get an instant download link in your email—no waiting required.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Can I use the pack in monetized videos?</summary>
+                <div class="faq-content">
+                    <p>Yes, all the text animation presets inside the Creator Text Animations Pack can be used in
+                        personal or commercial projects.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Will the pack work with my editing software?</summary>
+                <div class="faq-content">
+                    <p>No, this pack is designed to work exclusively with Premiere Pro.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Do I need any extra plugins or software?</summary>
+                <div class="faq-content">
+                    <p>No extra software like After Effects or external plugins are needed - just drag, drop, and
+                        customize right inside Premiere Pro.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>What can I customize?</summary>
+                <div class="faq-content">
+                    <p>You can fully customize the text, font, size, color, position, animation speed, fps and more so
+                        you can make it completely your own!</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="#" class="footer-logo">
+                <img src="https://framerusercontent.com/images/hP9xqphX2F8HiY5nZsPdHX2T8.png" alt="Logo">
+            </a>
+            <ul class="footer-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+            <div class="footer-divider"></div>
+            <p class="footer-copy">© 2026 Creator Animations. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
