@@ -774,6 +774,7 @@ data-position="Right"
 data-x_margin="18"
 data-y_margin="18">
 </script>
+    
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -782,7 +783,7 @@ var btn = document.createElement("div");
 /* icons */
 var chaiIcon='<img src="https://buymeachai.ezee.li/assets/images/chai.png" style="width:36px;height:36px;">';
 
-var arrowIcon='<svg style="width:16px;height:16px;" viewBox="0 0 16 10" fill="none"><path d="M14.1133 0L8 6.11331L1.88669 0L0 1.88663L8 9.88663L16 1.88663L14.1133 0Z" fill="white"/></svg>';
+var arrowIcon='<svg style="width:18px;height:18px;" viewBox="0 0 16 10" fill="none"><path d="M14.1133 0L8 6.11331L1.88669 0L0 1.88663L8 9.88663L16 1.88663L14.1133 0Z" fill="white"/></svg>';
 
 btn.innerHTML = chaiIcon;
 
@@ -803,10 +804,20 @@ btn.style.cursor="pointer";
 btn.style.transition="all 0.25s ease";
 btn.style.transform="scale(1)";
 
+/* pulse animation */
+btn.animate([
+{transform:"scale(1)"},
+{transform:"scale(1.08)"},
+{transform:"scale(1)"}
+],{
+duration:2000,
+iterations:Infinity
+});
+
 document.body.appendChild(btn);
 
 
-/* iframe popup */
+/* popup iframe */
 var iframe=document.createElement("iframe");
 iframe.src="https://buymeachai.ezee.li/minda";
 iframe.style.position="fixed";
@@ -814,12 +825,13 @@ iframe.style.right="18px";
 iframe.style.bottom="170px";
 iframe.style.width="420px";
 iframe.style.height="710px";
+iframe.style.maxWidth="95vw";
 iframe.style.border="0";
-iframe.style.borderRadius="10px";
-iframe.style.boxShadow="0 10px 40px rgba(0,0,0,0.2)";
+iframe.style.borderRadius="12px";
+iframe.style.boxShadow="0 20px 60px rgba(0,0,0,0.25)";
 iframe.style.display="none";
 iframe.style.opacity="0";
-iframe.style.transform="scale(0.9)";
+iframe.style.transform="translateY(20px) scale(0.95)";
 iframe.style.transition="all 0.3s ease";
 iframe.style.zIndex="9999";
 
@@ -836,7 +848,7 @@ btn.style.transform="scale(1)";
 };
 
 
-/* click open popup */
+/* toggle popup */
 btn.onclick=function(){
 
 if(iframe.style.display==="none"){
@@ -845,20 +857,20 @@ iframe.style.display="block";
 
 setTimeout(function(){
 iframe.style.opacity="1";
-iframe.style.transform="scale(1)";
+iframe.style.transform="translateY(0) scale(1)";
 },10);
 
 btn.innerHTML=arrowIcon;
-btn.style.transform="rotate(180deg) scale(1.1)";
+btn.style.transform="rotate(180deg)";
 
 }else{
 
 iframe.style.opacity="0";
-iframe.style.transform="scale(0.9)";
+iframe.style.transform="translateY(20px) scale(0.95)";
 
 setTimeout(function(){
 iframe.style.display="none";
-},250);
+},300);
 
 btn.innerHTML=chaiIcon;
 btn.style.transform="scale(1)";
