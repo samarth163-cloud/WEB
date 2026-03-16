@@ -762,6 +762,142 @@
             <p class="footer-copy">© 2026 Creator Animations. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script data-name="BMC-Widget"
+data-cfasync="false"
+src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+data-id="lashondambrown"
+data-description="Support me on Buy me a coffee!"
+data-message="Thank you for visiting. You can buy me a coffee!"
+data-color="#FF5F5F"
+data-position="Right"
+data-x_margin="18"
+data-y_margin="18">
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+var btn = document.createElement("div");
+
+/* icons */
+var chaiIcon='<img src="https://buymeachai.ezee.li/assets/images/chai.png" style="width:36px;height:36px;">';
+
+var arrowIcon='<svg style="width:16px;height:16px;" viewBox="0 0 16 10" fill="none"><path d="M14.1133 0L8 6.11331L1.88669 0L0 1.88663L8 9.88663L16 1.88663L14.1133 0Z" fill="white"/></svg>';
+
+btn.innerHTML = chaiIcon;
+
+/* button style */
+btn.style.display="flex";
+btn.style.alignItems="center";
+btn.style.justifyContent="center";
+btn.style.width="64px";
+btn.style.height="64px";
+btn.style.background="rgb(255,95,95)";
+btn.style.borderRadius="32px";
+btn.style.position="fixed";
+btn.style.right="18px";
+btn.style.bottom="90px";
+btn.style.boxShadow="rgba(0,0,0,0.15) 0px 4px 8px";
+btn.style.zIndex="9999";
+btn.style.cursor="pointer";
+btn.style.transition="all 0.25s ease";
+btn.style.transform="scale(1)";
+
+document.body.appendChild(btn);
+
+
+/* iframe popup */
+var iframe=document.createElement("iframe");
+iframe.src="https://buymeachai.ezee.li/minda";
+iframe.style.position="fixed";
+iframe.style.right="18px";
+iframe.style.bottom="170px";
+iframe.style.width="420px";
+iframe.style.height="710px";
+iframe.style.border="0";
+iframe.style.borderRadius="10px";
+iframe.style.boxShadow="0 10px 40px rgba(0,0,0,0.2)";
+iframe.style.display="none";
+iframe.style.opacity="0";
+iframe.style.transform="scale(0.9)";
+iframe.style.transition="all 0.3s ease";
+iframe.style.zIndex="9999";
+
+document.body.appendChild(iframe);
+
+
+/* hover animation */
+btn.onmouseover=function(){
+btn.style.transform="scale(1.15)";
+};
+
+btn.onmouseleave=function(){
+btn.style.transform="scale(1)";
+};
+
+
+/* click open popup */
+btn.onclick=function(){
+
+if(iframe.style.display==="none"){
+
+iframe.style.display="block";
+
+setTimeout(function(){
+iframe.style.opacity="1";
+iframe.style.transform="scale(1)";
+},10);
+
+btn.innerHTML=arrowIcon;
+btn.style.transform="rotate(180deg) scale(1.1)";
+
+}else{
+
+iframe.style.opacity="0";
+iframe.style.transform="scale(0.9)";
+
+setTimeout(function(){
+iframe.style.display="none";
+},250);
+
+btn.innerHTML=chaiIcon;
+btn.style.transform="scale(1)";
+
+}
+
+};
+
+});
+</script>
+
+
+
+
+
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('cutx_sam', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support Me',
+    'floating-chat.donateButton.background-color': '#323842',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+
+
+
+
+
+
+
+
+
 </body>
 
 </html>
+
+
+
+
+
+
