@@ -865,16 +865,18 @@
             </ul>
 
 
+            <div class="footer-divider"></div>
             <p class="footer-copy">© 2026 Creator Animations. All Rights Reserved.</p>
             <p class="footer-copy"
-                style="margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                style="margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 0.95rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
                 </svg>
-                Visitors: <span id="visitor-count">0</span>
+                Visitors: <span id="visitor-count">Loading...</span>
             </p>
+        </div>
 
         </div>
     </footer>
@@ -991,19 +993,6 @@
         });
     </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let count = localStorage.getItem("visitorCount");
-            if (!count) {
-                count = 0;
-            } else {
-                count = parseInt(count) + 1;
-            }
-            localStorage.setItem("visitorCount", count);
-            document.getElementById("visitor-count").textContent = count;
-        });
-    </script>
-
 
 
 
@@ -1019,10 +1008,22 @@
 
 
 
-
-
-
-
+    <script>
+        // Global Visitor Counter Logic
+        document.addEventListener("DOMContentLoaded", function () {
+            // Using a free global counter API
+            fetch("https://api.counterapi.dev/v2/samarth-haveliwalas-team-3998/first-counter-3998/up")
+                .then(response => response.json())
+                .then(data => {
+                    let countEl = document.getElementById("visitor-count");
+                    if (countEl && data && data.data && data.data.up_count !== undefined) {
+                        // Format with commas
+                        countEl.innerText = data.data.up_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    }
+                })
+                .catch(error => console.error("Error fetching visitor count:", error));
+        });
+    </script>
 
 
 </body>
