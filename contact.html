@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Creator text Animations</title>
     <style>
-        /* Shared Styles from main site to keep consistency */
-   body {
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             background-color: #1d0101;
             /* Added a sleek grid background pattern */
             background-image:
@@ -65,6 +70,105 @@
         nav ul li a:hover {
             color: #ffffff;
             transform: translateY(-1px);
+        }
+
+
+        /* --- Mobile Responsiveness --- */
+        .menu-toggle {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-button {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 25px;
+                /* Adjust padding for mobile */
+                border-radius: 50px;
+                position: relative;
+                /* Context for absolute nav */
+            }
+
+            .hamburger {
+                display: flex;
+                /* Show Hamburger */
+            }
+
+            .desktop-button {
+                display: none;
+                /* Hide button inside right side of header */
+            }
+
+            .mobile-button {
+                display: block;
+                margin-top: 10px;
+            }
+
+            nav {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 20px;
+                padding: 20px;
+                display: none;
+                /* Hidden by default */
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+            }
+
+            nav ul li a {
+                font-size: 1rem;
+                width: 100%;
+                padding: 8px 0;
+            }
+
+            /* Show nav when checkbox is checked */
+            #menu-toggle:checked~nav {
+                display: flex;
+            }
+
+            /* Hamburger animation */
+            #menu-toggle:checked~.hamburger span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            #menu-toggle:checked~.hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+
+            #menu-toggle:checked~.hamburger span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
         }
 
 
@@ -272,12 +376,18 @@
 </head>
 <body>
 
- <header class="container">
-        <a href="index.html" class="logo">
+  <header class="container">
+        <a href="buy.html" class="logo">
             <!-- Updated the nav logo just in case -->
             <img src="https://framerusercontent.com/images/hP9xqphX2F8HiY5nZsPdHX2T8.png?scale-down-to=1024&width=1289&height=1721"
                 alt="Logo">
         </a>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
