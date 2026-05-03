@@ -73,6 +73,105 @@
             color: #ffffff;
             transform: translateY(-1px);
         }
+        
+        /* --- Mobile Responsiveness --- */
+        .menu-toggle {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-button {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 25px;
+                /* Adjust padding for mobile */
+                border-radius: 50px;
+                position: relative;
+                /* Context for absolute nav */
+            }
+
+            .hamburger {
+                display: flex;
+                /* Show Hamburger */
+            }
+
+            .desktop-button {
+                display: none;
+                /* Hide button inside right side of header */
+            }
+
+            .mobile-button {
+                display: block;
+                margin-top: 10px;
+            }
+
+            nav {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 20px;
+                padding: 20px;
+                display: none;
+                /* Hidden by default */
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+            }
+
+            nav ul li a {
+                font-size: 1rem;
+                width: 100%;
+                padding: 8px 0;
+            }
+
+            /* Show nav when checkbox is checked */
+            #menu-toggle:checked~nav {
+                display: flex;
+            }
+
+            /* Hamburger animation */
+            #menu-toggle:checked~.hamburger span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            #menu-toggle:checked~.hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+
+            #menu-toggle:checked~.hamburger span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+
 
         /* High-End Split Hero */
         .hero-split {
@@ -194,7 +293,8 @@
         .video-container-glass {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
+            /* 16:9 Aspect Ratio */
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
@@ -205,9 +305,9 @@
             transform: perspective(1000px) rotateY(-5deg);
             transition: transform 0.5s ease;
         }
-        
+
         .hero-video-wrapper:hover .video-container-glass {
-             transform: perspective(1000px) rotateY(0deg);
+            transform: perspective(1000px) rotateY(0deg);
         }
 
         .video-container-glass iframe {
@@ -225,21 +325,25 @@
                 flex-direction: column;
                 text-align: center;
             }
+
             .hero-content {
                 max-width: 100%;
             }
+
             .price-box {
                 justify-content: center;
             }
+
             .video-container-glass {
                 transform: none;
             }
+
             .hero-video-wrapper:hover .video-container-glass {
                 transform: none;
             }
         }
 
-        
+
 
         /* Footer Styles */
         .footer {
@@ -529,12 +633,18 @@
 </head>
 
 <body>
-    <header class="container">
-        <a href="index.html" class="logo">
+     <header class="container">
+        <a href="buy.html" class="logo">
             <!-- Updated the nav logo just in case -->
             <img src="https://framerusercontent.com/images/hP9xqphX2F8HiY5nZsPdHX2T8.png?scale-down-to=1024&width=1289&height=1721"
                 alt="Logo">
         </a>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -549,17 +659,17 @@
 
 
 
-
-<!-- High-End Split Hero Section -->
+    <!-- High-End Split Hero Section -->
     <main class="hero-split">
         <!-- Details & Buy Section -->
         <div class="hero-content">
             <div class="hero-badge">Premium Pack</div>
             <h1 class="hero-title">Creator Text Animations</h1>
             <h2 class="hero-subtitle">Pro-level text. One pack.</h2>
-            
+
             <p class="hero-desc">
-                Stop wasting hours animating text. Upgrade your content with 29 hand-crafted, drag & drop animations built for modern creators. 
+                Stop wasting hours animating text. Upgrade your content with 29 hand-crafted, drag & drop animations
+                built for modern creators.
             </p>
 
             <ul class="bundle-features" style="margin-bottom: 2rem;">
@@ -574,30 +684,20 @@
                 <span class="price-currency">USD</span>
             </div>
 
-            <a href="#" class="buy-action-btn">Buy Now</a>
+            <a href="https://store.artzenmedia.com/checkout/buy/d70d463c-123d-4c9d-99ed-b56274a151f0?embed=1&amp;logo=0&amp;desc=0"
+                class="buy-action-btn lemonsqueezy-button">Buy Now</a>
         </div>
+
 
         <!-- Video Section -->
         <div class="hero-video-wrapper">
             <div class="video-container-glass">
-                <iframe src="https://www.youtube.com/embed/FuJMmRrjnQw?autoplay=1&mute=1&loop=1&playlist=FuJMmRrjnQw&controls=0" frameborder="0" allowfullscreen title="Creator Text Animations Preview"></iframe>
+                <iframe
+                    src="https://www.youtube.com/embed/FuJMmRrjnQw?autoplay=1&mute=1&loop=1&playlist=FuJMmRrjnQw&controls=0"
+                    frameborder="0" allowfullscreen title="Creator Text Animations Preview"></iframe>
             </div>
         </div>
     </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <section class="bundle-section">
         <h2 class="bundle-title">Bundle & Save 25%!</h2>
         <p class="bundle-subtitle">Bundle the Creator Text Animations + Master LUT and <span>SAVE $20!</span></p>
@@ -615,7 +715,7 @@
                     <li>Instant Download</li>
                     <li>Lifetime Access & Updates</li>
                 </ul>
-                <a href="#" class="buy-btn bundle-btn">Get the Bundle</a>
+                <a href="" class="buy-btn bundle-btn">Get the Bundle</a>
             </div>
         </div>
     </section>
@@ -676,8 +776,153 @@
             </ul>
             <div class="footer-divider"></div>
             <p class="footer-copy">© 2026 Creator Animations. All Rights Reserved.</p>
+            <footer>
+                Visits: <span id="counter">0</span>
+            </footer>
         </div>
     </footer>
+
+
+    <script>
+        const API_KEY = "YOUR_API_KEY";
+        const BASE_URL = "https://api.counterapi.dev/v2/samarth-haveliwalas-team-3998/first-counter-3998";
+
+        // 1. Increment (visit +1)
+        fetch(BASE_URL + "/up", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + ut_lFPgknfQxF2zIZxeAZbnWYL63LyEWG7CzVtnPyad
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("counter").innerText = data.value;
+            })
+            .catch(err => console.error(err));
+    </script>
+
+
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+        data-id="lashondambrown" data-description="Support me on Buy me a coffee!"
+        data-message="Thank you for visiting. You can buy me a coffee!" data-color="#FF5F5F" data-position="Right"
+        data-x_margin="18" data-y_margin="18">
+        </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            var btn = document.createElement("div");
+
+            /* icons */
+            var chaiIcon = '<img src="https://buymeachai.ezee.li/assets/images/chai.png" style="width:36px;height:36px;">';
+
+            var arrowIcon = '<svg style="width:16px;height:16px;" viewBox="0 0 16 10" fill="none"><path d="M14.1133 0L8 6.11331L1.88669 0L0 1.88663L8 9.88663L16 1.88663L14.1133 0Z" fill="white"/></svg>';
+
+            btn.innerHTML = chaiIcon;
+
+            /* button style */
+            btn.style.display = "flex";
+            btn.style.alignItems = "center";
+            btn.style.justifyContent = "center";
+            btn.style.width = "64px";
+            btn.style.height = "64px";
+            btn.style.background = "rgb(255,95,95)";
+            btn.style.borderRadius = "32px";
+            btn.style.position = "fixed";
+            btn.style.right = "18px";
+            btn.style.bottom = "90px";
+            btn.style.boxShadow = "rgba(0,0,0,0.15) 0px 4px 8px";
+            btn.style.zIndex = "9999";
+            btn.style.cursor = "pointer";
+            btn.style.transition = "all 0.25s ease";
+            btn.style.transform = "scale(1)";
+
+            document.body.appendChild(btn);
+
+
+            /* iframe popup */
+            var iframe = document.createElement("iframe");
+            iframe.src = "https://buymeachai.ezee.li/minda";
+            iframe.style.position = "fixed";
+            iframe.style.right = "18px";
+            iframe.style.bottom = "170px";
+            iframe.style.width = "420px";
+            iframe.style.height = "710px";
+            iframe.style.border = "0";
+            iframe.style.borderRadius = "10px";
+            iframe.style.boxShadow = "0 10px 40px rgba(0,0,0,0.2)";
+            iframe.style.display = "none";
+            iframe.style.opacity = "0";
+            iframe.style.transform = "scale(0.9)";
+            iframe.style.transition = "all 0.3s ease";
+            iframe.style.zIndex = "9999";
+
+            document.body.appendChild(iframe);
+
+
+            /* hover animation */
+            btn.onmouseover = function () {
+                btn.style.transform = "scale(1.15)";
+            };
+
+            btn.onmouseleave = function () {
+                btn.style.transform = "scale(1)";
+            };
+
+
+            /* click open popup */
+            btn.onclick = function () {
+
+                if (iframe.style.display === "none") {
+
+                    iframe.style.display = "block";
+
+                    setTimeout(function () {
+                        iframe.style.opacity = "1";
+                        iframe.style.transform = "scale(1)";
+                    }, 10);
+
+                    btn.innerHTML = arrowIcon;
+                    btn.style.transform = "rotate(180deg) scale(1.1)";
+
+                } else {
+
+                    iframe.style.opacity = "0";
+                    iframe.style.transform = "scale(0.9)";
+
+                    setTimeout(function () {
+                        iframe.style.display = "none";
+                    }, 250);
+
+                    btn.innerHTML = chaiIcon;
+                    btn.style.transform = "scale(1)";
+
+                }
+
+            };
+
+        });
+    </script>
+
+
+
+
+
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+        kofiWidgetOverlay.draw('cutx_sam', {
+            'type': 'floating-chat',
+            'floating-chat.donateButton.text': 'Support Me',
+            'floating-chat.donateButton.background-color': '#323842',
+            'floating-chat.donateButton.text-color': '#fff'
+        });
+    </script>
+
+
+
+
+
+
+    <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
 </body>
 
 </html>
